@@ -18,5 +18,10 @@ io.on('connection', function(socket) {
 	socket.on('msgParaServidor', function(data) {
 		socket.emit('msgParaCliente', data);
 		socket.broadcast.emit('msgParaCliente', data);
+
+		if (parseInt(data.apelido_atualizado) == 0) {
+			socket.emit('participantesParaCliente', {apelido: data.apelido});
+			socket.broadcast.emit('participantesParaCliente', {apelido: data.apelido});
+		}
 	});
 });
