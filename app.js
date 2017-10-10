@@ -4,4 +4,19 @@ var server = app.listen(80, function(){
 	console.log("Running...");
 });
 
-require('socket.io').listen(server);
+var io = require('socket.io').listen(server);
+app.set('io', io);
+
+// criar conexão por websocket
+io.on('connection', function(socket) {
+	console.log("usuario conectou");
+
+	socket.on('disconnect', function(){
+		console.log("Usuario desconectou");
+	});
+
+	socket.on('msgParaServidor', function(data) {
+		socket.emit('msgParaCliente', data);
+		socket.broadcast.emit('msgParaCliente', data);
+	});
+});
