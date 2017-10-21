@@ -24,3 +24,11 @@ or
 ```bash
 nodemon app
 ```
+
+## Source
+
+Source  | Data
+------------- | -------------
+Author  | Jorge Sant Ana
+Class  | Node.JS Development
+Link  | <https://www.udemy.com/curso-completo-do-desenvolvedor-nodejs>
